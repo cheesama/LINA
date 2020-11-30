@@ -1,13 +1,11 @@
 import * as React from "react";
-import { List, Datagrid, TextField, ArrayField, ChipField, ReferenceField, EditButton } from 'react-admin';
+import { List, Datagrid, TextField, ArrayField, FunctionField, ChipField, ReferenceField } from 'react-admin';
 
 export const UtteranceList = props => (
     <List {...props}>
         <Datagrid rowClick="edit">
             <TextField source="utterance" />
-            <ReferenceField source="intent_id" label="intent" reference="meta-intents">
-                <TextField source="Intent_ID" />
-            </ReferenceField>
+            <FunctionField label="Intent" render={record => `${record.intent_id.Intent_ID}`} />
             <ArrayField source="entities">
                 <Datagrid>
                     <TextField source="entity" />
